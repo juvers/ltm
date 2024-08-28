@@ -1,9 +1,7 @@
 ## Build your own voice assistant and run it locally: Whisper + Ollama + Bark
-
-> Original article: https://blog.duy-huynh.com/build-your-own-voice-assistant-and-run-it-locally/
 > 
 After my latest post about how to build your own RAG and run it locally. Today, we're taking it a step further by not only implementing the conversational abilities of large language models but also adding listening and speaking capabilities. The idea is straightforward: we are going to create a voice assistant reminiscent of Jarvis or Friday from the iconic Iron Man movies, which can operate offline on your computer. Since this is an introductory tutorial, I will implement it in Python and keep it simple enough for beginners. Lastly, I will provide some guidance on how to scale the application.
-![voice_assistant](https://github.com/vndee/local-talking-llm/assets/28271488/858a6991-9c9b-4518-90a9-8263ad9ad767)
+
 
 ### Techstack
 First, you should set up a virtual Python environment. You have several options for this, including pyenv, virtualenv, poetry, and others that serve a similar purpose. Personally, I'll use Poetry for this tutorial due to my personal preferences. Here are several crucial libraries you'll need to install:
@@ -25,7 +23,7 @@ Okay, if everything has been set up, let's proceed to the next step. Below is th
 - **Conversational Chain**: For the conversational capabilities, we'll employ the Langchain interface for the Llama-2 model, which is served using Ollama. This setup promises a seamless and engaging conversational flow.
 - **Speech Synthesizer**: The transformation of text to speech is achieved through Bark, a state-of-the-art model from Suno AI, renowned for its lifelike speech production.
 The workflow is straightforward: record speech, transcribe to text, generate a response using an LLM, and vocalize the response using Bark.
-![Application-Architecture](https://github.com/vndee/local-talking-llm/assets/28271488/c0d2d92f-1def-48ee-85b1-503ccabdbedf)
+
 
 ### Implementation
 The implementation begins with crafting a TextToSpeechService based on Bark, incorporating methods for synthesizing speech from text and handling longer text inputs seamlessly as follow:
@@ -264,8 +262,6 @@ if __name__ == "__main__":
     console.print("[blue]Session ended.")
 ```
 ### Result
-
-Video demo: https://youtu.be/n3b9u1t4E-I?si=DksdOi0P6iPhY9g7
 
 Once everything is put down together, we can run the application as shown in the video above. The application runs quite slowly on my MacBook because the Bark model is large, even in its smaller version. Therefore, I have slightly sped up the video. For those with a CUDA-enabled computer, it might run faster. Here are the key features of our application:
 
